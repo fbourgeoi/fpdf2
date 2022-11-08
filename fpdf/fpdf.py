@@ -3753,7 +3753,7 @@ class FPDF(GraphicsStateMixin):
         # - for built-in fonts: string instances (encoding: latin-1, cp1252)
         if not self.is_ttf_font and self.core_fonts_encoding:
             try:
-                return txt.encode(self.core_fonts_encoding).decode("latin-1")
+                return txt.encode(self.core_fonts_encoding, 'ignore').decode("latin-1")
             except UnicodeEncodeError as error:
                 raise FPDFUnicodeEncodingException(
                     text_index=error.start,
